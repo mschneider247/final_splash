@@ -12,6 +12,5 @@ export const getImages = async (searchQuery, page, perPage) => {
     throw Error(`Error searching`)
   }
   const data = await response.json()
-  window.console.log("data in apicalls::: ", data.results)
   return data.results
 }
