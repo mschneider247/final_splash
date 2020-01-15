@@ -17,6 +17,12 @@ A simple image searching app developed in Vue. Allows the user to input search q
 - Michael Schneider https://github.com/mschneider247
 
 ## Project setup
+
+Clone repo.
+```
+git clone
+```
+Install dependencies.
 ```
 npm install
 ```
