@@ -8,7 +8,7 @@
         <img :src="require('../find.png')" id="search_btn" @click="searchImages" />
       </section>
     </header>
-    <images :images="images" />
+    <images :images="images"/>
     <footer>
       <p>this is the footer</p>
     </footer>
@@ -32,17 +32,16 @@ export default {
   },
   methods: {
     searchImages: async function () {
-      const data = getImages(this.searchQuery, 1, 10)
       try {
-        this.images = data.results;
-        document.querySelector('#input_search').val === ''
+        const data = await getImages(this.searchQuery, 1, 10)
+        this.images = data
+        this.searchQuery = '';
       } catch (error) {
         window.console.log('Error searching', error)
       }  
     },
     setSearchQuery: function (value) {
       this.searchQuery = value
-      this.searchImages({preventDefault: () => {}})
     },
   }
 }
