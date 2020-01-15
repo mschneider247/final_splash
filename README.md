@@ -1,4 +1,20 @@
-# final_splash
+# Final Splash
+A simple image searching app developed in Vue. Allows the user to input search queries, choose image orientation and how many results to display to the window.
+
+### Focuses
+- Learn the Basics of Vue
+- Connect to the UnSplash API
+- Show image results to the user
+- Allow user input to filter results
+
+### Screenshots
+![Final Splash]()
+
+### Tech
+- Created with Vue.js
+
+## Front End
+- Michael Schneider https://github.com/mschneider247
 
 ## Project setup
 ```
@@ -19,6 +35,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
