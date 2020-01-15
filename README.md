@@ -8,7 +8,7 @@ A simple image searching app developed in Vue. Allows the user to input search q
 - Allow user input to filter results
 
 ### Screenshots
-![Final Splash]()
+![Final Splash](./screenshot.jpg)
 
 ### Tech
 - Created with Vue.js
