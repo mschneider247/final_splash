@@ -11,13 +11,8 @@
 
 export default {
   name: 'Images',
-  props: ['images', 'setSearchQuery'],
-  methods: {
-    displayPhotos: function () {
-      return this.images.map(image => image.results.urls.regular)
-    }
-  }
-  } 
+  props: ['images'],
+} 
   
 </script>
 
