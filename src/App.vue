@@ -4,8 +4,8 @@
       <h1>Final Splash</h1>
       <section id="search">
         <p>Search through UnSplash for your favorite photos!</p>
-        <input class="search" v-model='searchWord' placeholder="Search"/>
-        <img :src="require('../find.png')" class="search__btn" @click="searchImages" />
+        <input id="input_search" v-model='searchQuery' placeholder="Search"/>
+        <img :src="require('../find.png')" id="search_btn" @click="searchImages" />
       </section>
     </header>
     <images :images="images" />
@@ -17,11 +17,33 @@
 
 <script>
 import Images from './components/Images.vue'
+import { getImages } from '../apiCalls.js'
 
 export default {
   name: 'app',
   components: {
     Images
+  },
+  data() {
+    return {
+      images: [],
+      searchQuery: '',
+    }
+  },
+  methods: {
+    searchImages: async function () {
+      const data = getImages(this.searchQuery, 1, 10)
+      try {
+        this.images = data.results;
+        document.querySelector('#input_search').val === ''
+      } catch (error) {
+        window.console.log('Error searching', error)
+      }  
+    },
+    setSearchQuery: function (value) {
+      this.searchQuery = value
+      this.searchImages({preventDefault: () => {}})
+    },
   }
 }
 </script>
