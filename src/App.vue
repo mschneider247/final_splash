@@ -20,10 +20,6 @@
         <input type="checkbox" @click="toggleLandscapePortrait"/>
         <span class="checkbox">Portrait</span>
       </label>
-      <label class="settings">
-        <input type="checkbox"/>
-        <span class="checkbox">Image Quality</span>
-      </label>
     </footer>
   </div>
 </template>
@@ -59,13 +55,10 @@ export default {
       this.searchQuery = value
     },
     toggleImagesPerPage: function () {
-      window.console.log('toggleImagesPerPage')
+      this.imagesPerPage === 4 ? this.imagesPerPage = 10 : this.imagesPerPage = 4;
     },
     toggleLandscapePortrait: function () {
-      window.console.log('toggleLandscapePortrait')
-    },
-    toggleImageQuality: function () {
-      window.console.log('toggleImageQuality')
+      this.landscapePortrait === 'landscape' ? this.landscapePortrait = 'portrait' : this.landscapePortrait = 'landscape';
     }
   }
 }
@@ -104,6 +97,10 @@ export default {
     margin-bottom: -20px;
     justify-content: center;
   }
+  #search_btn:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+  }
   #input_search {
     font-size: 1.5em;
     text-align: center;
@@ -117,6 +114,9 @@ export default {
     padding-bottom: 2%;
   }
   footer {
+    position: fixed;
+    bottom: 5%;
+    left: 5%;
     margin-top: 5%;
     border-radius: 5px;
     padding: 1% 2% 2% 2%;
