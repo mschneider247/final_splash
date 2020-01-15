@@ -11,11 +11,19 @@
     <h3 id="prompt" v-if="!this.images.length">Try a search to see some images!</h3>
     <images :images="images"/>
     <footer>
-      <input type="radio"/>
-      <input type="radio"/>
-      <input type="radio"/>
-      <input type="radio"/>
-      <input type="radio"/>
+      <h3>Options::</h3>
+      <label class="settings">
+        <input type="checkbox" @click="toggleImagesPerPage"/>
+        <span class="checkbox">10 images per page</span>
+      </label>
+      <label class="settings">
+        <input type="checkbox" @click="toggleLandscapePortrait"/>
+        <span class="checkbox">Portrait</span>
+      </label>
+      <label class="settings">
+        <input type="checkbox"/>
+        <span class="checkbox">Image Quality</span>
+      </label>
     </footer>
   </div>
 </template>
@@ -33,12 +41,14 @@ export default {
     return {
       images: [],
       searchQuery: '',
+      imagesPerPage: 4,
+      landscapePortrait: 'landscape',
     }
   },
   methods: {
     searchImages: async function () {
       try {
-        const data = await getImages(this.searchQuery, 1, 10)
+        const data = await getImages(this.searchQuery, this.landscapePortrait, this.imagesPerPage)
         this.images = data
         this.searchQuery = '';
       } catch (error) {
@@ -48,6 +58,15 @@ export default {
     setSearchQuery: function (value) {
       this.searchQuery = value
     },
+    toggleImagesPerPage: function () {
+      window.console.log('toggleImagesPerPage')
+    },
+    toggleLandscapePortrait: function () {
+      window.console.log('toggleLandscapePortrait')
+    },
+    toggleImageQuality: function () {
+      window.console.log('toggleImageQuality')
+    }
   }
 }
 </script>
@@ -59,6 +78,7 @@ export default {
     padding: 2% 2% 2% 15%;
     background: #363457;
     border-radius: 10px;
+    box-shadow: 1px 2px #000000;
   }
   h1 {
     font-size: 3em;
@@ -95,5 +115,21 @@ export default {
     margin-left: auto;
     margin-right: 20%;
     padding-bottom: 2%;
+  }
+  footer {
+    margin-top: 5%;
+    border-radius: 5px;
+    padding: 1% 2% 2% 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border: 1px solid black;
+    width: 200px;
+    background: #363457;
+    box-shadow: 1px 2px #000000;
+  }
+  .settings {
+    margin: 2%;
+    margin-right: auto;
   }
 </style>

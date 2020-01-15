@@ -26,6 +26,6 @@ img {
   margin: 2%;
 }
 img:hover {
-  transform: scale(1.4); 
+  transform: scale(1.2); 
 }
 </style>
